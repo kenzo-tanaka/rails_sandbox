@@ -25,7 +25,10 @@ gem 'turbolinks', '~> 5'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'simple_form'
 gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 gem 'slim'
 gem 'slim-rails'
 
