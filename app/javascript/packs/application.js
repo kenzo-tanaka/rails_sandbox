@@ -10,6 +10,7 @@ require("channels");
 require("jquery");
 require("@client-side-validations/client-side-validations");
 require("@client-side-validations/simple-form");
+require("@client-side-validations/simple-form/dist/simple-form.bootstrap4");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
