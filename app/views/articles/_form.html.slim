@@ -11,4 +11,6 @@
   .field
     = f.label :description
     = f.text_area :description
+  .field
+    = f.file_field :video, accept: "video/*"
   .actions = f.submit
