@@ -12,16 +12,14 @@ require("@client-side-validations/client-side-validations");
 require("@client-side-validations/simple-form");
 require("@client-side-validations/simple-form/dist/simple-form.bootstrap4");
 
-import $ from "jquery";
+document.addEventListener("turbolinks:load", () => {
+  const videoInput = document.querySelector(".js-video-input");
+  const video = document.querySelector(".js-video-player");
 
-$(document).on("turbolinks:load", function () {
-  $("#article_video").on("change", (event) => {
-    const $file = event.currentTarget.files[0];
-    const $video = $(".js-video-player");
-    $video.css("display", "block");
-    $video.attr("src", URL.createObjectURL($file));
+  videoInput.addEventListener("change", (event) => {
+    const file = event.currentTarget.files[0];
+    videoPreview(file, video);
 
-    const video = document.querySelector(".js-video-player");
     const canvas = document.getElementById("canvasId");
     const img = document.getElementById("imgId");
 
@@ -32,6 +30,11 @@ $(document).on("turbolinks:load", function () {
       draw(video, canvas, img);
     });
   });
+
+  const videoPreview = (file, videoTag) => {
+    videoTag.style.display = "block";
+    videoTag.setAttribute("src", URL.createObjectURL(file));
+  };
 
   const draw = (video, canvas, img) => {
     const context = canvas.getContext("2d");
