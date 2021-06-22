@@ -17,19 +17,16 @@ document.addEventListener("turbolinks:load", () => {
   const video = document.querySelector(".js-video-player");
   const canvas = document.getElementById("canvasId");
   const img = document.getElementById("imgId");
-
-  canvas.width = 1900;
-  canvas.height = 1000;
+  const captureLink = document.querySelector(".js-capture-thumbnail");
 
   videoInput.addEventListener("change", (event) => {
     const file = event.currentTarget.files[0];
     videoPreview(file, video);
+  });
 
-    video.addEventListener("pause", () => {
-      img.style.display = "block";
-
-      draw(video, canvas, img);
-    });
+  captureLink.addEventListener("click", () => {
+    img.style.display = "block";
+    draw(video, canvas, img);
   });
 
   const videoPreview = (file, videoTag) => {

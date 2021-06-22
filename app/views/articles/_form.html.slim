@@ -14,7 +14,8 @@
   .field
     = f.file_field :video, accept: "video/*", class: 'js-video-input'
     = video_tag '', class: 'js-video-player', style: 'display: none;', controls: true, width: 1000
+  a.js-capture-thumbnail このシーンでサムネイルを生成
   .field
-    canvas id='canvasId' style='display: none;'
+    canvas id='canvasId' style='display: none;' width='1000' height='500'
     img alt="preview" id='imgId' style='display: none;'
   .actions = f.submit
