@@ -15,16 +15,14 @@ require("@client-side-validations/simple-form/dist/simple-form.bootstrap4");
 document.addEventListener("turbolinks:load", () => {
   const videoInput = document.querySelector(".js-video-input");
   const video = document.querySelector(".js-video-player");
+  const canvas = document.getElementById("canvasId");
+  const img = document.getElementById("imgId");
 
   videoInput.addEventListener("change", (event) => {
     const file = event.currentTarget.files[0];
     videoPreview(file, video);
 
-    const canvas = document.getElementById("canvasId");
-    const img = document.getElementById("imgId");
-
     video.addEventListener("pause", () => {
-      canvas.style.display = "block";
       img.style.display = "block";
 
       draw(video, canvas, img);
@@ -36,6 +34,7 @@ document.addEventListener("turbolinks:load", () => {
     videoTag.setAttribute("src", URL.createObjectURL(file));
   };
 
+  // https://developer.mozilla.org/ja/docs/Web/API/Canvas_API/Tutorial/Using_images
   const draw = (video, canvas, img) => {
     const context = canvas.getContext("2d");
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
