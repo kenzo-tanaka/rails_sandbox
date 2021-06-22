@@ -18,6 +18,9 @@ document.addEventListener("turbolinks:load", () => {
   const canvas = document.getElementById("canvasId");
   const img = document.getElementById("imgId");
 
+  canvas.width = 1900;
+  canvas.height = 1000;
+
   videoInput.addEventListener("change", (event) => {
     const file = event.currentTarget.files[0];
     videoPreview(file, video);
