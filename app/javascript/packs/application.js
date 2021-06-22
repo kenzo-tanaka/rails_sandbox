@@ -20,5 +20,23 @@ $(document).on("turbolinks:load", function () {
     const $video = $(".js-video-player");
     $video.css("display", "block");
     $video.attr("src", URL.createObjectURL($file));
+
+    const video = document.querySelector(".js-video-player");
+    const canvas = document.getElementById("canvasId");
+    const img = document.getElementById("imgId");
+
+    video.addEventListener("pause", () => {
+      canvas.style.display = "block";
+      img.style.display = "block";
+
+      draw(video, canvas, img);
+    });
   });
+
+  const draw = (video, canvas, img) => {
+    const context = canvas.getContext("2d");
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const dataUrl = canvas.toDataURL();
+    img.setAttribute("src", dataUrl);
+  };
 });

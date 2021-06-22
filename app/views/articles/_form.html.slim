@@ -14,4 +14,7 @@
   .field
     = f.file_field :video, accept: "video/*", class: 'js-video-input'
     = video_tag '', class: 'js-video-player', style: 'display: none;', controls: true, width: 1000
+  .field
+    canvas id='canvasId' style='display: none;'
+    img alt="preview" id='imgId' style='display: none;'
   .actions = f.submit
