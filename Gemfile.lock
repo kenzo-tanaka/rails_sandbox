@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:kenzo-tanaka/any_login.git
+  revision: ec8fa65644a068220465731696da639108735ea5
+  branch: feat/customized
+  specs:
+    any_login (1.4.4)
+      rails (>= 4.2.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,6 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  any_login!
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -267,4 +276,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   2.1.4
+   2.2.25
