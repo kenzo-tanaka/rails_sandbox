@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:kenzo-tanaka/any_login.git
-  revision: 118d69629367ce2b36ca7af25496d84c2083b88c
+  revision: 8fd46767ba9ebf03a5a5bf9b2894abb2848c685a
   branch: feat/customized
   specs:
     any_login (1.4.4)
