@@ -35,7 +35,8 @@ gem 'carrierwave'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-#gem 'devise'
+gem 'devise'
+#gem 'authlogic'
 
 gem 'any_login', git: 'git@github.com:kenzo-tanaka/any_login.git', branch: 'feat/multiple-models-support'
 
