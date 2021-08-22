@@ -13,3 +13,11 @@
     password: 'password'
   )
 end
+
+3.times do |i|
+  i += 1
+  Staff.create(
+    email: "test-#{i}@example.com",
+    password: 'password'
+  )
+end
