@@ -1,1 +1,1 @@
-EasyLogin.klass_names = ['User']
+EasyLogin.klass_names = ['User', 'Staff']
