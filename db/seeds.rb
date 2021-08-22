@@ -8,7 +8,7 @@
 
 3.times do |i|
   User.create(
-    email: "test=#{i}@example.com",
+    email: "test-#{i}@example.com",
     password: 'password'
   )
 end
