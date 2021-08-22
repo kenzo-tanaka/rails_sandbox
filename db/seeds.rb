@@ -9,7 +9,7 @@
 3.times do |i|
   i += 1
   User.create(
-    email: "test-#{i}@example.com",
+    email: "test-user#{i}@example.com",
     password: 'password'
   )
 end
@@ -17,7 +17,7 @@ end
 3.times do |i|
   i += 1
   Staff.create(
-    email: "test-#{i}@example.com",
+    email: "test-staff#{i}@example.com",
     password: 'password'
   )
 end
