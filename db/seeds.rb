@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 3.times do |i|
+  i += 1
   User.create(
     email: "test-#{i}@example.com",
     password: 'password'
