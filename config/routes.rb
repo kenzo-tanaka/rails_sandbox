@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount AnyLoginMultiple::Engine => '/any_login_multiple'
   devise_for :staffs
   devise_for :users
   root to: 'articles#index'
