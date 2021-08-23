@@ -1,27 +1,10 @@
-h1 Listing articles
-
-= current_user&.email
-= current_staff&.email
-
-
-table
-  thead
-    tr
-      th Title
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - @articles.each do |article|
-      tr
-        td = article.title
-        td = article.description
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
+h1
+  | Current User:
+  = current_user&.email
 
 br
 
-= link_to 'New Article', new_article_path
+h1
+  | Current Staff:
+  = current_staff&.email
+
