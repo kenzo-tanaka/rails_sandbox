@@ -62,8 +62,8 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    any_login_multiple (0.1.1)
-      rails (~> 6.1.4, >= 6.1.4.1)
+    any_login_multiple (0.1.6)
+      rails (>= 4.2.7)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
@@ -258,7 +258,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  any_login_multiple
+  any_login_multiple (~> 0.1.6)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
