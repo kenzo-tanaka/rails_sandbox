@@ -32,6 +32,7 @@ gem 'client_side_validations-simple_form'
 gem 'slim'
 gem 'slim-rails'
 gem 'carrierwave'
+gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
