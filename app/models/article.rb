@@ -10,4 +10,8 @@ class Article < ApplicationRecord
   def self.ransackable_scopes(auth_object = nil)
     %i[created_since]
   end
+
+  # def self.ransackable_scopes_skip_sanitize_args
+  #   %i[created_since]
+  # end
 end
