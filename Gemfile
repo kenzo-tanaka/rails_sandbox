@@ -30,7 +30,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
 gem 'slim'
-gem 'slim-rails'
+#gem 'slim-rails'
 gem 'carrierwave'
 
 # Reduces boot times through caching; required in config/boot.rb
