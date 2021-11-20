@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :products
+  end
+  namespace :admin do
     resources :articles
   end
   root 'articles#index'
