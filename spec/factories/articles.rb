@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :article do
-    title { "Mystring" }
+    sequence(:title) { |n| "sample title #{n}" }
   end
 end
