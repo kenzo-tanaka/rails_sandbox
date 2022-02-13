@@ -1,6 +1,17 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
+
+# Setup yarn
+# ref: https://github.com/yarnpkg/yarn/issues/2888#issuecomment-285852090
+ADD https://dl.yarnpkg.com/debian/pubkey.gpg /tmp/yarn-pubkey.gpg
+RUN apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
+RUN echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -qq -y --no-install-recommends \
+      build-essential libpq-dev curl
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get update && apt-get install -qq -y --no-install-recommends nodejs yarn
+
+RUN apt-get update -qq && apt-get install -y postgresql-client
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
