@@ -4,7 +4,6 @@
 docker-compose up
 ```
 
-
 # DBのみDocker利用
 
 ```shell
@@ -12,6 +11,7 @@ docker run -it -p 5432:5432 -e 'POSTGRES_PASSWORD=password' -e 'POSTGRES_USERNAM
 ```
 
 ```shell
+brew install postgresql
 bundle
 rails db:create db:migrate
 ```
