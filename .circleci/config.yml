@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circleci-demo-ruby-rails
+    working_directory: ~/rails_sandbox
 
     docker:
       - image: circleci/ruby:2.6.3-node
