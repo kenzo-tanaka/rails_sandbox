@@ -12,7 +12,8 @@ jobs:
 
       - image: circleci/postgres:9.6
         environment:
-          POSTGRES_USER: root
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_DB: rails_sandbox_test
 
