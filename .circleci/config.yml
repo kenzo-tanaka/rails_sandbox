@@ -10,10 +10,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: root
 
-      - image: circleci/postgres:14.0
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数を参照します。
+      - image: circleci/postgres:9.6
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle-test_test
