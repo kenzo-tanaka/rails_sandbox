@@ -1,49 +1,62 @@
-version: 2.1
-
+version: 2
 jobs:
-  working_directory: ~/rails-sandbox
+  build:
+    working_directory: ~/circleci-demo-ruby-rails
 
-  docker:
-    - image: cimg/ruby:2.6.3-node
-      environment:
-        RAILS_ENV: test
-        PGHOST: localhost
-        RGUSER: root
+    # すべてのコマンドを実行するプライマリコンテナのイメージです。
 
-    - image: cimg/postgres:14.0
-      environment:
-        POSTGRES_USER: root
-        POSTGRES_DB: rails_sandbox_test
+    docker:
+      - image: cimg/ruby:2.6.3-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数を参照します。
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
 
-  steps:
-    - checkout
+      # `host: localhost` にあるサービスコンテナイメージです。
 
-    # バンドルキャッシュを復元
-    - restore_cache:
-        keys:
-          - rails-demo-{{ checksum "Gemfile.lock" }}
-          - rails-demo-
+      - image: cimg/postgres:14.0
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数を参照します。
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
 
-    - run:
-        name: Install dependencies
-        command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+    steps:
+      - checkout
 
-    - run: sudo apt install -y postgresql-client || true
+      # バンドルキャッシュを復元します。
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
 
-    - save_cache:
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      # 依存関係をバンドルインストールします。
+      - run:
+          name: Install dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
 
-    - run:
-        name: データベースのセットアップ
-        command: |
-          bundle exec rake db:create
-          bundle exec rake db:structure:load
+      - run: sudo apt install -y postgresql-client || true
 
-    - run:
-        name: 並列 RSpec
-        command: bin/rails test
+      # バンドルキャッシュを保存します。
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
-    - store_test_results:
-        path: /tmp/test-results
+      - run:
+          name: データベースのセットアップ
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
+
+      - run:
+          name: 並列 RSpec
+          command: bin/rails test
+
+      # アーティファクトを保存します。
+      - store_test_results:
+          path: /tmp/test-results
