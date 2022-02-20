@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/rails_sandbox
+
+    docker:
+      - image: circleci/ruby:2.6.3-node
+        environment:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: root
+
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: rails_sandbox_test
+
+    steps:
+      - checkout
+
+      # バンドルキャッシュを復元します。
+      - restore_cache:
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+
+      # 依存関係をバンドルインストールします。
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler
+            bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+
+      - run: sudo apt install -y postgresql-client || true
+
+      # バンドルキャッシュを保存します。
+      - save_cache:
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: データベースのセットアップ
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
+
+      - run:
+          name: 並列 RSpec
+          command: bin/rails test
+
+      # アーティファクトを保存します。
+      - store_test_results:
+          path: /tmp/test-results
