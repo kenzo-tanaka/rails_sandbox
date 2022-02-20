@@ -3,21 +3,14 @@ jobs:
   build:
     working_directory: ~/circleci-demo-ruby-rails
 
-    # すべてのコマンドを実行するプライマリコンテナのイメージです。
-
     docker:
-      - image: cimg/ruby:2.6.3-node
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数を参照します。
+      - image: circleci/ruby:2.6.3-node
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: root
 
-      # `host: localhost` にあるサービスコンテナイメージです。
-
-      - image: cimg/postgres:14.0
+      - image: circleci/postgres:14.0
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # コンテキスト/プロジェクト UI 環境変数を参照します。
