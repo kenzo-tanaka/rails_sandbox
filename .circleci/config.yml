@@ -52,4 +52,4 @@ jobs:
           command: bundle exec rspec
 
       - store_artifacts:
-          path: coverage/index.html
+          path: coverage
