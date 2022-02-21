@@ -51,6 +51,5 @@ jobs:
           name: 並列 RSpec
           command: bin/rails test
 
-      # アーティファクトを保存します。
-      - store_test_results:
-          path: /tmp/test-results
+      - store_artifacts:
+          path: coverage
