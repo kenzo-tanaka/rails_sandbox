@@ -35,6 +35,7 @@ gem 'carrierwave'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,6 +60,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem "test-prof", "~> 1.0"
+  gem 'simplecov', require: true
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
