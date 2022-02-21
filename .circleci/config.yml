@@ -49,7 +49,7 @@ jobs:
 
       - run:
           name: 並列 RSpec
-          command: bin/rails test
+          command: bundle exec rspec
 
       - store_artifacts:
           path: coverage
