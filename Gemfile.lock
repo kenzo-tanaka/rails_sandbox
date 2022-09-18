@@ -1,10 +1,8 @@
-GIT
-  remote: git@github.com:kenzo-tanaka/any_login.git
-  revision: fff96ecc087897e1fffc8b21e654ce7f984ab4ea
-  branch: feat/multiple-models-support
+PATH
+  remote: ../any_login
   specs:
-    any_login (1.4.4)
-      rails (>= 4.2.7)
+    any_login (1.5.2)
+      rails (>= 6.0)
 
 GEM
   remote: https://rubygems.org/

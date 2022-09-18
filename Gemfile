@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 #gem 'authlogic'
 
-gem 'any_login', git: 'git@github.com:kenzo-tanaka/any_login.git', branch: 'feat/multiple-models-support'
+gem 'any_login', path: '../any_login'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
